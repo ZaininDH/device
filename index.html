@@ -4,17 +4,25 @@
   <meta charset="UTF-8" />
   <title>Redirecting...</title>
   <script>
-    // IP сайта, который меняется при переезде
-    const currentIp = "127.0.0.1:5000";
+    // Твой текущий IP или домен сайта
+    const currentIp = "123.45.67.89";
 
-    // Получаем путь после домена, например /MonkeyInventory/device/1
-    const path = window.location.pathname;
+    // Получаем часть URL после #
+    const hash = window.location.hash; // например "#/1"
 
-    // Формируем URL с IP и тем же путем
-    const targetUrl = `http://${currentIp}${path}`;
+    if (hash.startsWith("#/")) {
+      // Извлекаем ID устройства (число после "#/")
+      const deviceId = hash.substring(2);
 
-    // Переадресация
-    window.location.replace(targetUrl);
+      // Формируем новый URL для редиректа
+      const targetUrl = `http://${currentIp}/device/${deviceId}`;
+
+      // Делаем редирект
+      window.location.replace(targetUrl);
+    } else {
+      // Если хэш отсутствует или не в нужном формате — можно показать сообщение
+      document.body.innerHTML = "<p>Пожалуйста, перейдите по ссылке с указанием устройства, например: #/1</p>";
+    }
   </script>
 </head>
 <body>
