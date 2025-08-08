@@ -4,32 +4,31 @@
   <meta charset="UTF-8" />
   <title>Redirecting...</title>
   <script>
-    // Твой текущий IP или домен сайта
-    const currentIp = "127.0.0.1:5000";
+    window.addEventListener('DOMContentLoaded', () => {
+      const currentIp = "127.0.0.1:5000"; // Поставь сюда свой IP или домен
 
-    // Получаем часть URL после #
-    const hash = window.location.hash; // например "#/1"
+      const hash = window.location.hash; // Получаем часть после #
 
-    if (hash.startsWith("#/")) {
-      // Извлекаем ID устройства (число после "#/")
-      const deviceId = hash.substring(2);
+      console.log("Текущий хеш:", hash);
 
-      // Формируем новый URL для редиректа
-      const targetUrl = `http://${currentIp}/device/${deviceId}`;
+      if (hash.startsWith("#/")) {
+        const deviceId = hash.substring(2);
+        const targetUrl = `http://${currentIp}/device/${deviceId}`;
 
-      // Делаем редирект
-      window.location.replace(targetUrl);
-    } else {
-      // Если хэш отсутствует или не в нужном формате — можно показать сообщение
-      document.body.innerHTML = "<p>Пожалуйста, перейдите по ссылке с указанием устройства, например: #/1</p>";
-    }
+        console.log("Редирект на:", targetUrl);
+
+        // Немного задержки, чтобы увидеть сообщение и не блокировать редирект
+        setTimeout(() => {
+          window.location.replace(targetUrl);
+        }, 100); // 100 мс задержки
+      } else {
+        document.body.innerHTML = `<p>Пожалуйста, перейдите по ссылке с указанием устройства, например: <code>#/1</code></p>`;
+        console.log("Хеш не найден или неправильный формат");
+      }
+    });
   </script>
 </head>
 <body>
   <p>Переадресация...</p>
 </body>
 </html>
-
-
-
-
