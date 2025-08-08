@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Redirecting...</title>
+  <script>
+    // IP сайта, который меняется при переезде
+    const currentIp = "127.0.0.1:5000";
+
+    // Получаем путь после домена, например /MonkeyInventory/device/1
+    const path = window.location.pathname;
+
+    // Формируем URL с IP и тем же путем
+    const targetUrl = `http://${currentIp}${path}`;
+
+    // Переадресация
+    window.location.replace(targetUrl);
+  </script>
+</head>
+<body>
+  <p>Переадресация...</p>
+</body>
+</html>
