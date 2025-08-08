@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Redirecting...</title>
+  <script>
+    // IP и путь к твоему серверу
+    const currentIp = "123.45.67.89"; // сюда свой IP или домен
+
+    // Получаем полный путь после домена github.io
+    // Например, для https://zainindh.github.io/device/1 -> pathname = "/device/1"
+    const path = window.location.pathname;
+
+    // Формируем URL для редиректа
+    const targetUrl = `http://${currentIp}${path}`;
+
+    // Выполняем редирект
+    window.location.replace(targetUrl);
+  </script>
+</head>
+<body>
+  <p>Переадресация...</p>
+</body>
+</html>
